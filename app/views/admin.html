@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Manage Store</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+
+
+
+
+    <!--  -->
+    <div class="container">
+        <!-- Navbars -->
+        <nav class="navbar navbar-expand-md bg-secondary navbar-dark mb-2">
+            <!-- Brand -->
+            <a class="navbar-brand" href="./index.html"><i class="fa-solid fa-store fa-2x"></i></a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse " id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Details</a>
+                    </li>
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            Other
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Page</a>
+                            <a class="dropdown-item" href="#">Page 1</a>
+                            <a class="dropdown-item" href="#">Page 2</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--  -->
+        <div class="card text-center">
+            <!-- Header -->
+            <div class="card-header myCardHeader">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="text-left text-primary font-weight-bold">Danh sách sản phẩm</h3>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-primary" id="btnThem" data-toggle="modal" data-target="#myModal">Thêm sản
+                            phẩm</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Nhập từ khoá" id="searchProduct">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="btnTimSP"><i class="fa fa-search"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered table-hover myTable">
+                    <thead class="text-primary">
+                        <tr>
+                            <th class="nowrap">
+                                <span class="mr-1">STT</span>
+                            </th>
+                            <th>Tên sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Hình ảnh</th>
+                            <th>Mô tả</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableDanhSach">
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Footer -->
+            <div class="card-footer myCardFooter">
+                <nav>
+                    <ul class="pagination justify-content-center" id="ulPhanTrang">
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog " id="">
+            <div class="modal-content">
+                <header class="head-form mb-0 mt-4 row ml-0 mr-0">
+                    <h2 id="header-title" class="model-title text-center col-11">Thêm sản phẩm</h2>
+                    <button type="button" class="close col-1 mb-5" data-dismiss="modal">x</button>
+                </header>
+                <div class="modal-body" id="formmm">
+                    <form role="form">
+                        <div class="form-group mb-0 ">
+                            <label for="">Tên sản phẩm</label>
+                            <input type="tenSP" name="tenSP" id="tenSP" class="form-control input-sm" placeholder="">
+                            <span class="ml-1 sp-thongbao text-danger" id="tbTenSP"></span>
+                        </div>
+
+                        <div class="form-group mb-0">
+                            <label for="">Giá</label>
+                            <input type="giaSP" name="giaSP" id="giaSP" class="form-control input-sm" placeholder="">
+                            <span class="sp-thongbao text-danger" id="tbGiaSP"></span>
+                        </div>
+                        <div class="form-group mb-0">
+                            <label for="">Hình ảnh</label>
+                            <input type="url" name="hinhSP" id="hinhSP" class="form-control input-sm" placeholder="">
+                            <span class="sp-thongbao text-danger" id="tbHinhSP"></span>
+                        </div>
+                        <div class="form-group mb-0">
+                            <label for="">Mô tả</label>
+                            <textarea id="MoTa" class="form-control" cols="1s0" rows="10" style="height: 135px;"
+                                placeholder="Nhập mô tả"></textarea>
+                            <span class="sp-thongbao text-danger" id="tbMoTa"></span>
+                        </div>
+
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer" id="modal-footer">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- AXIOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"
+        integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--  -->
+    <script src="../models/products.js"></script>
+    <!--  -->
+    <script src="../controllers/validation.js"></script>
+    <!--  -->
+    <script src="../services/callApi.js"></script>
+    <!--  -->
+    <script src="../controllers/admin.js"></script>
+</body>
+
+</html>
