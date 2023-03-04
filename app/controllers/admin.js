@@ -10,11 +10,11 @@ function getListProduct() {
     .then(function (result) {
       console.log(result.data);
       renderProduct(result.data);
-      Reset();
     })
     .catch(function (error) {
       console.log(error);
     });
+  Reset();
 }
 getListProduct();
 function renderProduct(data) {
@@ -52,7 +52,6 @@ function handleDelete(id) {
     .deleteProduct(id)
     .then(function () {
       getListProduct();
-      alert("Sản phẩm đã được xoá!");
     })
     .catch(function (error) {
       console.log(error);
@@ -77,25 +76,31 @@ function handleAdd() {
   var isValid = true;
 
   isValid &=
-    validation.kiemTraRong(tenSP, "tbTenSP", "Vui lòng nhập tên sản phẩm!") &&
-    validation.kiemTraChuoiKyTu(tenSP, "tbTen", "Vui lòng nhập chuỗi ký tự");
-
+    validation.kiemTraRong(tenSP, "tbTenSP", "Vui lòng nhập tên sản phẩm") &&
+    validation.kiemTraChuoiKyTu(
+      tenSP,
+      "tbTenSP",
+      "Không nhập ký tự đặc biệt"
+    ) &&
+    validation.kiemTraDoDaikyTu(
+      tenSP,
+      "tbTenSP",
+      "Vui lòng nhập đủ 8 -> 18 ký tự",
+      8,
+      18
+    );
   isValid &=
-    validation.kiemTraRong(giaSP, "tbGiaSP", "Vui lòng nhập giá sản phẩm!") &&
-    validation.kiemTraSo(giaSP, "tbGiaSP", "Vui lòng nhập giá bằng chữ số!");
-
-  isValid = validation.kiemTraRong(
-    hinhSP,
-    "tbHinhSP",
-    "Vui lòng nhập địa chỉ hình ảnh!"
-  );
+    validation.kiemTraRong(giaSP, "tbGiaSP", "Vui lòng nhập giá sản phẩm") &&
+    validation.kiemTraSo(giaSP, "tbGiaSP", "Vui lòng nhập số");
   isValid &=
     validation.kiemTraRong(
-      moTa,
-      "tbMoTa",
-      "Vui lòng nhập nội dung sản phẩm!"
+      hinhSP,
+      "tbHinhSP",
+      "Vui lòng nhập địa chỉ hình ảnh"
     ) &&
-    validation.kiemTraChuoiKyTu(moTa, "tbMoTa", "Vui lòng nhập chuỗi ký tự");
+    validation.kiemTraLinkURL(hinhSP, "tbHinhSP", "Vui lòng nhập đúng địa chỉ");
+  isValid = validation.kiemTraRong(moTa, "tbMoTa", "Vui lòng nhập mô tả");
+
   if (!isValid) return null;
 
   var product = new Product("", tenSP, giaSP, "", "", "", hinhSP, moTa, "");
