@@ -101,11 +101,11 @@ function handleAdd() {
     validation.kiemTraLinkURL(hinhSP, "tbHinhSP", "Vui lòng nhập đúng địa chỉ");
   isValid = validation.kiemTraRong(moTa, "tbMoTa", "Vui lòng nhập mô tả");
 
-  if (!isValid) return null;
-
+  if (!isValid) {
+    return null;
+  }
   var product = new Product("", tenSP, giaSP, "", "", "", hinhSP, moTa, "");
 
-  console.log(product);
   callApi
     .addProduct(product)
     .then(function () {
