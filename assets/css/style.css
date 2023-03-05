@@ -175,3 +175,6 @@ p {
 #pageAdm i {
   color: black;
 }
+#pageAdm :hover i {
+  color: white;
+}
